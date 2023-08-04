@@ -9,6 +9,8 @@ var sendForm = document.querySelector('#chatform'),
     animationCounter = 1,
     animationBubbleDelay = 600,
     input,
+    respostaChat,
+    busca,
     mensagemErro = "Desculpe não consegui entender :( para ver a lista de comandos digite: comandos"
 
 //DETECTA O ENVIO DA MENSAGEM DO USUARIO POR PRESSIONAR 'ENTER' E RENDERIZA A MENSAGEM NO FRONT
@@ -55,8 +57,15 @@ var sendForm = document.querySelector('#chatform'),
 //VERIFICA O INPUT DO USUARIO PARA VER SE ELE TEM RESPOSTA PARA ESSAS PERGUNTAS...
   function checkInput(input) {
     hasCorrectInput = false;
-    //PERCORRE TODO O OBJETO possibleInput (abaixo) PARA VERIFICAR SE EXISTEM ALGUM COMANDO
-    for(var textVal in possibleInput){
+    
+    //VERIFICA SE É UMA RESPOSTA QUE O CHAT PRECISA DAR OU UM PROMPT NORMAL...
+      if(respostaChat == true){
+        busca = respostsChat
+      }else{
+        busca = possibleInput
+      }
+    //PERCORRE TODO O OBJETO PARA VERIFICAR SE EXISTEM ALGUM COMANDO
+    for(var textVal in busca){
       
       //É UMA PALAVRA QUE ESTA NO OBJETO possibleInput?
       if(input == textVal){
@@ -64,6 +73,7 @@ var sendForm = document.querySelector('#chatform'),
         hasCorrectInput = true;
         botResponse(textVal);
       }
+
     }
     //SE NÃO ACHAR A PALAVRA NO OBJETO possibleInput
     if(hasCorrectInput == false){
@@ -71,6 +81,8 @@ var sendForm = document.querySelector('#chatform'),
       comandoDesconhecido(mensagemErro);
       hasCorrectInput = true;
     }
+
+    
   }
 
 
@@ -80,7 +92,7 @@ var sendForm = document.querySelector('#chatform'),
     userBubble.classList.add('bot__output');
 
     //EXECUTA A FUNÇÃO DO OBJETO possibleInput
-    userBubble.innerHTML = possibleInput[textVal]();
+    userBubble.innerHTML = busca[textVal]();
       
     chatList.appendChild(userBubble)
 
@@ -111,14 +123,14 @@ var sendForm = document.querySelector('#chatform'),
     animationCounter = 1;
   }
 
-//FUNÇÃO PARA RESPOSTA DO CHAT...
+//FUNÇÃO PARA RESPOSTA DO CHAT... PODE SER USADO TAGS HTML DENTRO DA STRING 'TEXTO'
   function responseText(texto) {
 
     var response = document.createElement('li');
 
     response.classList.add('bot__output');
 
-    response.innerHTML = texto;
+    response.innerHTML = `${texto}`;
 
     chatList.appendChild(response);
 
@@ -140,25 +152,50 @@ var sendForm = document.querySelector('#chatform'),
     chatList.lastElementChild.style.animationPlayState = "running";
   }
 
-//FUNÇÃO QUE USAMOS PRA RESETAR AS CONFIGS DO CHAT, COMO A VELOCIDADE QUE EXIBE OS BALOES DE CHAT 'animationCounter' e reseta o objeto 'possibleInput'
-function commandReset(e){
-  animationCounter = 1;
-  previousInput = Object.keys(possibleInput)[e];
-}
+//FUNÇÃO QUE USAMOS PRA RESETAR AS CONFIGS DO CHAT, COMO A VELOCIDADE QUE EXIBE OS BALOES DE CHAT 'animationCounter' 
+//E recebe um parametro que é um valor Booleano: Se esse valor for True, ele busca as respostas no objeto 'respostsChat'
+//Se for False, ele continua buscando nos possibleinput
+  function commandReset(boleano){
+    animationCounter = 1;
+    respostaChat = boleano
+  }
 
 //PROMPTS QUE O CHAT PODE RECEBER
 var possibleInput = {
+  //1- DEFINIMOS A KEY (QUE DEVE SER O INPUT DO USUARIO), E O VALUE É UMA FUNÇÃO QUE SEMPRE TEM 
+  //"responseText()": RESPOSTA DO CHAT & "commandReset()". Entre essas duas funções adicionamos toda a lógica das respostas
   "ajuda" : function(){
-    responseText("Ainda não temos comandos para ajuda :)")
-    commandReset(0);
+    //2- RESPOSTA PRO USUARIO
+    responseText("Reza pra Deus :)")
+    //
+    //3- LOGICA AQUI, REQUISIÇÕES ETC
+    //
+    commandReset(false);
     return
     },
-  "oi" : function(){
-    responseText("Oi!");
-    commandReset(1);
+//VER COMANDOS
+    0 : function(){
+      responseText("Esses são os comandos que eu sei:")
+      responseText(`
+                    <strong>0-</strong>Ver Comandos<br>
+                    <strong>1-</strong>Dizer alguma frase!<br>
+                    <strong>2-</strong>Ver temperatura<br>
+                    <strong>3-</strong>Ver humidade<br>
+                  `);
+      commandReset(false);
+      return
+    },
+//DIZER OI
+  1 : function(){
+    responseText("1- OI");
+    responseText("2- THAU");
+    
+    //O USUARIO ESPERA UMA RESPOSTA DESSAS OPÇÕES DO CHAT ENTAO 'commandReset()' é TRUE.
+    commandReset(true);
     return
     },
-  "temperatura" : function(){
+//VER TEMPERATURA
+  2 : function(){
       var weather= new XMLHttpRequest();
       weather.open("GET", "https://api.thingspeak.com/channels/725914/feeds.json?api_key=R8UXP1FFMCLN5G4E", false);
       weather.send(null);
@@ -166,11 +203,11 @@ var possibleInput = {
       celcius = Math.round(r.feeds[r.channel.last_entry_id-1].field1);
       coverage = r.feeds[r.channel.last_entry_id-1].field2;
       responseText("A temperatura é "+celcius+" graus celcius" );
-      commandReset(2);
+      commandReset(false);
       return
     },
-  
-	"humidade" : function(){
+//VER HUMIDADE
+	3 : function(){
 		var weather= new XMLHttpRequest();
 		weather.open("GET", "https://api.thingspeak.com/channels/725914/feeds.json?api_key=R8UXP1FFMCLN5G4E", false);
         weather.send(null);
@@ -178,17 +215,25 @@ var possibleInput = {
         celcius = Math.round(r.feeds[r.channel.last_entry_id-1].field1);
         coverage = r.feeds[r.channel.last_entry_id-1].field2;
         responseText("A humidade é "+coverage);
-        commandReset(2);
+        commandReset(false);
     return
-    },
-  "comandos" : function(){
-    responseText("Esses são os comandos que eu sei:")
-    responseText("ajuda, oi, temperatura, humidade, comandos e rick roll!");
-    commandReset(3);
-    return
-  },
-  "rick roll" : function(){
-    window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-    },
+    }
 }
 
+
+//RESPOSTAS DOS INPUTS
+var respostsChat = {
+  1 : function(){
+    responseText("OI")
+
+    commandReset(false);
+    return
+    },
+  2 : function(){
+      //2- RESPOSTA PRO USUARIO
+      responseText("Thau")
+      
+      commandReset(false);
+      return
+      }
+}
