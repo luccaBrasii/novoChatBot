@@ -22,8 +22,8 @@ class Inputs{
             responseText(`
                         <strong>0-</strong>Ver Comandos<br>
                         <strong>1-</strong>Dizer alguma frase!<br>
-                        <strong>2-</strong>Ver temperatura<br>
-                        <strong>3-</strong>Ver humidade<br>
+                        <strong>ajuda-</strong>Mensagem de ajuda<br>
+                        <strong>sair-</strong>Encerra o atendimento<br>
                         `);
             commandReset(false);
             return
@@ -36,6 +36,14 @@ class Inputs{
         //O USUARIO ESPERA UMA RESPOSTA DESSAS OPÇÕES DO CHAT ENTAO 'commandReset()' é TRUE.
         commandReset('IPTU');
         return
+        },
+        sair: function(){
+
+            responseText('Adeus :)')
+            responseText('Atendimento encerrado..')
+            responseText(`<a href='#'>Clique aqui para voltar a tela inicial...</a>`)
+
+            commandReset()
         }
     }
 //IPTU
