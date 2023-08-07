@@ -1,7 +1,7 @@
 import responseText from "../funcoesChat/responseText.js";
 import commandReset from "../funcoesChat/commandReset.js";
 
-class inputs{
+class Inputs{
 //PROMPTS QUE O CHAT PODE RECEBER
 //INICIAL
     inputInicial = {
@@ -57,6 +57,6 @@ class inputs{
     }
 }
 
-const inputsChat = new inputs
+const inputsChat = new Inputs
 
 export default inputsChat
