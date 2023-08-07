@@ -55,14 +55,14 @@ body {
 .chatbot__overview {
   background-color: #00564C;
   display: flex;
-  flex-flow: row nowrap;
   align-content: space-between;
   min-height: 80vh;
   max-height: 80vh;
   margin: 0 auto;
   padding: 1em;
   padding-bottom: 0;
-  width: 40rem;
+  flex-wrap: wrap;
+  
 }
 
 .chatlist {
@@ -72,7 +72,7 @@ body {
   flex-flow: column nowrap;
   align-items: flex-end;
   overflow-x: hidden;
-  width: 100%;
+  width: 40rem;
   max-height: 75vh;
   margin: 0 auto;
 }
@@ -280,4 +280,13 @@ input[type="submit"]:hover {
     margin: 10px;
   }
 
+  .page__main{
+    margin: 10px;
+    position: inherit;
+    transform: translate(0);
+  }
+  
+  .chatlist {
+    width: auto;
+  }
 }
