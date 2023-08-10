@@ -8,7 +8,7 @@
 
   var animationCounter = {value: 1}
   var hasCorrectInput = {value: undefined}
-  var respostaChat = {value: 'InputInicial'}
+  var respostaChat = {value: 'inputInicial'}
   var busca = {value: undefined}
 
   export {

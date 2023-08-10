@@ -1,23 +1,22 @@
 import botResponse from "./botResponse.js";
 import comandoDesconhecido from "../respostasChat/comandoDesconhecido.js";
 import { hasCorrectInput, respostaChat, busca } from "../index.js";
-
+import { mapeamentoValores } from "../respostasChat/index.js";
 import inputsChat from "../respostasChat/index.js";
 
 const mensagemErro = "Desculpe não consegui entender :( para ver a lista de comandos digite: comandos"
 
-
 //VERIFICA O INPUT DO USUARIO PARA VER SE ELE TEM RESPOSTA PARA ESSAS PERGUNTAS...
 function checkInput(input) {
     hasCorrectInput.value = false;
-    //VERIFICA SE É UMA RESPOSTA QUE O CHAT PRECISA DAR OU UM PROMPT NORMAL...
-      if(respostaChat.value === 'IPTU'){
-        console.log('saiu');
-        busca.value = inputsChat.IPTU
-      }else{
-        console.log('entrou');
-        busca.value = inputsChat.inputInicial
-      }
+        
+    if (respostaChat.value in mapeamentoValores) {
+      busca.value = mapeamentoValores[respostaChat.value];
+      console.log('saiu');
+    } else {
+      busca.value = inputsChat.inputInicial;
+      console.log('entrou');
+    }
     //PERCORRE TODO O OBJETO PARA VERIFICAR SE EXISTEM ALGUM COMANDO
     
     for(var textVal in busca.value){
