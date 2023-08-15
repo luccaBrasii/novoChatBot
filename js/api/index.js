@@ -23,8 +23,10 @@ function funcaoBoasVindas(){
 }
 
 console.log(departments)
+console.log(services)
+console.log(polls)
+
 funcaoBoasVindas()
 
-export {services, polls}
 
 

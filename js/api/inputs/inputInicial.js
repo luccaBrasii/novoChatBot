@@ -30,9 +30,10 @@ function createInputObject(services) {
 
     Object.keys(groupedServices).forEach((department) => {
         groupedServices[department].forEach((service) => {
+            
             inputObject[service.id] = function() {
                 responseText(`<strong>${service.id} - </strong>${service.name}<br>`);
-                commandReset(service.name);
+                commandReset(service.department);
                 console.log('NOME: ' +service.name)
                 
             };
@@ -45,4 +46,4 @@ function createInputObject(services) {
 
 const inputInicial = createInputObject(services);
 
-export {inputInicial, createInputObject}
+export {inputInicial}

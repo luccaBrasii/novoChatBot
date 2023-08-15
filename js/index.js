@@ -8,15 +8,13 @@
 
   var animationCounter = {value: 1}
   var hasCorrectInput = {value: undefined}
-  var respostaChat = {value: 'inputInicial'}
-  var busca = {value: undefined}
+  var busca = {value: 'inputInicial'}
 
   export {
     chatList,
     textInput,
     animationCounter,
     hasCorrectInput,
-    respostaChat,
     busca
   }
 //
