@@ -4,7 +4,7 @@ import { hasCorrectInput, respostaChat, busca } from "../index.js";
 import { mapeamentoValores } from "../respostasChat/index.js";
 import inputsChat from "../respostasChat/index.js";
 
-const mensagemErro = "Desculpe não consegui entender :( para ver a lista de comandos digite: comandos"
+const mensagemErro = "Desculpe não consegui entender :( para ver a lista de comandos digite: ajuda"
 
 //VERIFICA O INPUT DO USUARIO PARA VER SE ELE TEM RESPOSTA PARA ESSAS PERGUNTAS...
 function checkInput(input) {
