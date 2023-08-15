@@ -1,11 +1,7 @@
-import responseText from "../funcoesChat/responseText.js";
-import commandReset from "../funcoesChat/commandReset.js";
-
 import {services, polls} from "../api/index.js"
+
 console.log(polls) //.service
 console.log(services)
-
-
 
 class Inputs{}
 
