@@ -22,6 +22,11 @@ app.get('/api', (req, res) => {
             "id": 2,
             "name": "Secretaria Municipal de Saúde",
             "category": "Saúde"
+        },
+        {
+            "id": 3,
+            "name": "Secretaria Municipal de Saúde 22",
+            "category": "Saúde"
         }
     ],
     "services": [
@@ -34,7 +39,15 @@ app.get('/api', (req, res) => {
             "id": 2,
             "name": "EMISSÃO DE ALVARÁ SANITÁRIO",
             "department": 2
-        }
+        },{
+            "id": 3,
+            "name": "IPTU 2",
+            "department": 1
+        },{
+            "id": 4,
+            "name": "saude 2",
+            "department": 2
+        },
     ],
     "polls": [
         {

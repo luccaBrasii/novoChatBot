@@ -5,6 +5,8 @@ import groupServicesByDepartment from "../separaServicos.js";
 import responseText from "../../funcoesChat/responseText.js";
 import commandReset from "../../funcoesChat/commandReset.js";
 
+import respostas from "./respostas.js";
+
 function createInputObject(services) {
     const groupedServices = groupServicesByDepartment(services);
 
@@ -31,7 +33,7 @@ function createInputObject(services) {
             
             inputObject[service.id] = function() {
                 responseText(`<strong>${service.id} - </strong>${service.title}<br>`);
-                commandReset('respostas');
+                commandReset(respostas);
                 console.log('NOME: ' +service.title)
             }
             

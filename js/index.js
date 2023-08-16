@@ -1,15 +1,17 @@
 //IMPORTACOES
   import chatUsuario from './efeitosVisuaisChat/chatUsuario.js';
+  import { inputInicial } from './api/inputs/inputInicial.js';
 
-
-//EXPORTACOES
+//VARIAVEIS
   const chatList = document.querySelector('.chatlist')
   const textInput = document.querySelector('.chatbox')
-
+  const sendForm = document.querySelector('#chatform')
+  
   var animationCounter = {value: 1}
   var hasCorrectInput = {value: undefined}
-  var busca = {value: 'inputInicial'}
+  var busca = {value: inputInicial}
 
+ //EXPORTACOES
   export {
     chatList,
     textInput,
@@ -19,7 +21,7 @@
   }
 //
 
-var sendForm = document.querySelector('#chatform')
+
   
 //DETECTA O ENVIO DA MENSAGEM DO USUARIO POR PRESSIONAR 'ENTER' E RENDERIZA A MENSAGEM NO FRONT
   sendForm.onkeydown = function(e){

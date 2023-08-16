@@ -5,6 +5,7 @@ import groupServicesByDepartment from "../separaServicos.js";
 import responseText from "../../funcoesChat/responseText.js";
 import commandReset from "../../funcoesChat/commandReset.js";
 
+
 function createInputObject(services) {
     const groupedServices = groupServicesByDepartment(services);
 
