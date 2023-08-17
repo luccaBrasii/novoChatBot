@@ -1,9 +1,10 @@
 import data from "../fetch.js";
-const services = data.services
-
 import responseText from "../../funcoesChat/responseText.js";
 import commandReset from "../../funcoesChat/commandReset.js";
-import servicos from "./services.js";
+import {servicos} from "./services.js";
+
+const services = data.services
+
 
 const inputInicial = {
     ajuda: function() {
@@ -26,40 +27,28 @@ const inputInicial = {
     }
 };
   
-services.forEach(service => {
-    const id = service.id;
-    const name = service.name;
-    const departament = service.department.toString();
 
-//    if(inputUser.input === departament){
-    
+function separaServices(input){
+
+    var lista = []
+
+    services.forEach(service => {
+        const id = service.id;
+        const departament = service.department.toString();
+        
+            if(input == departament){
+                lista.push(service)
+            }
+            
         inputInicial[id] = function() {
-            responseText(`<strong>${id} - </strong>${name}<br>`);
-            commandReset(servicos);
-            return;
-//      };
-    }
-    
-});
+            lista.forEach(service => {
+                    responseText(`<strong>${id} - </strong>${service.name}<br>`);
+                    commandReset(servicos);
+                    return;
+                })
+            }
+        })
+}
 
-/*
-"services": [
-            {
-                "id": 1,
-                "name": "IPTU",
-                "department": 1
-            },
-            {
-                "id": 2,
-                "name": "EMISSÃO DE ALVARÁ SANITÁRIO",
-                "department": 2
-            },
-            {
-                "id": 3,
-                "name": "IPTU 2",
-                "department": 1
-            },
-        ],
-*/
 
-export {inputInicial}
+export {inputInicial, separaServices}

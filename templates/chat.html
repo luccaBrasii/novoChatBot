@@ -1,0 +1,58 @@
+{% extends 'base.html' %}{% load static %}{% block content %}
+<section>
+    <div class="container-fluid col-4">
+        <div class="card">
+            <div class="card-header">
+                <img src="{% static 'assets/images/logo-pref-goiania.png' %}" alt="" width="120">
+            </div>
+            <div class="card-body">
+                <div id="messages">
+                    <div class="d-flex flex-row justify-content-start mb-4">
+                        <img src="{% static 'assets/images/pmg-logo.png' %}" alt="" style="width: 45px; height: 100%;">
+                        <div class="p-3 ms-3" style="border-radius: 15px; background-color: #E8E8E8;">
+                            <p class="small mb-0">Olá! Seja bem-vindo(a) ao Assistente Virtual da Prefeitura
+                                Municipal de Goiânia!</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-row justify-content-start mb-4">
+                        <img src="{% static 'assets/images/pmg-logo.png' %}" alt="avatar 1"
+                            style="width: 45px; height: 100%;">
+                        <div class="p-3 ms-3" style="border-radius: 15px; background-color: #E8E8E8;">
+                            <p class="small mb-0">Apenas os serviços listados abaixo estão disponíveis, aos poucos
+                                outros serão incluídos.</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-row justify-content-start mb-4">
+                        <img src="{% static 'assets/images/pmg-logo.png' %}" alt="avatar 1"
+                            style="width: 45px; height: 100%;">
+                        <div class="p-3 ms-3" style="border-radius: 15px; background-color: #E8E8E8;">
+                            <p class="small mb-0">Escolha o assunto desejado:</p><br>
+                            {% if departments %}
+                            {% for department in departments %}
+                            <p class="small mb-0">{{ department.id }} - {{ department.category }}</p>
+                            {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex flex-row justify-content-end mb-4">
+                        <div class="p-3 me-3 border" style="border-radius: 15px; background-color: #fbfbfb;">
+                            <p class="small mb-0">Thank you, I really like your product.</p>
+                        </div>
+                        <img src=""
+                            alt="" style="width: 45px; height: 100%;">
+                    </div>
+
+                    <hr>
+                    <div class="d-flex flex-row justify-content-start mb-4 form-group">
+                        <input class="form-control" type="search" id="searchInput"
+                         value="{{ request.GET.term }}" name="term" placeholder="Digite aqui" autofocus autocomplete="off">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

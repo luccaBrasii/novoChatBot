@@ -27,18 +27,7 @@ var respostas = {
 };
 
 
-services.forEach(service => {
-      const id = service.id
 
-//    if(inputUser.input === departament){
-        respostas[id] = function() {
-            responseText(`<p>${service.answer}</p>`);
-            commandReset();
-            return;
-//      };
-    }
-    
-});
 /*
 "polls": [
             {
@@ -63,6 +52,31 @@ services.forEach(service => {
     }
 */
 
+function separaAnswer(input){
+
+    var lista = []
+
+    services.forEach(service => {
+        const id = service.id;
+        const departament = service.department.toString();
+        
+        if(input == departament){
+            lista.push(service)
+        }
+
+            respostas[id] = function() {
+                lista.forEach(service => {
+                        responseText(`<p>${service.answer}</p>`);
+                        commandReset();
+                        return;
+                })
+            }
+            
+            
+        })
+
+        
+}
 
 
-export default respostas
+export  {respostas,separaAnswer}
