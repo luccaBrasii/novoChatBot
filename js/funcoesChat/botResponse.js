@@ -4,7 +4,7 @@ import { chatList, busca, textInput } from "../index.js";
 function botResponse(textVal) {
     var userBubble = document.createElement('li');
     userBubble.classList.add('bot__output');
-
+    
     //EXECUTA A FUNÇÃO DO OBJETO possibleInput
     userBubble.innerHTML = busca.value[textVal]();
       

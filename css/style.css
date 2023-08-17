@@ -134,7 +134,7 @@ body {
 }
 
 .chatlist .bot__output--standard:last-child {
-  display: block;
+  display: block !important;
 }
 
 .chatlist .bot__output--failed {

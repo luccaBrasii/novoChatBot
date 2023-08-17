@@ -8,6 +8,7 @@ const mensagemErro = "Desculpe não consegui entender :( para ver a lista de com
 function checkInput(input) {
     hasCorrectInput.value = false;
     
+    
     //PERCORRE TODO O OBJETO PARA VERIFICAR SE EXISTEM ALGUM COMANDO
       for(var textVal in busca.value){
         
@@ -15,6 +16,7 @@ function checkInput(input) {
         if(input == textVal){
           console.log("sucesso");
           hasCorrectInput.value = true;
+          
           botResponse(textVal);
         }
 
@@ -26,6 +28,5 @@ function checkInput(input) {
         hasCorrectInput.value = true;
       }
   }
-
 
 export default checkInput
