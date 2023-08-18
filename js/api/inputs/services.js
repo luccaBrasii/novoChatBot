@@ -4,29 +4,11 @@ const services = data.polls
 
 import responseText from "../../funcoesChat/responseText.js";
 import commandReset from "../../funcoesChat/commandReset.js";
+import InputBase from "./InputBase.js";
 
 import {respostas} from "./respostas.js";
 
-var servicos = {
-    ajuda: function() {
-        responseText("Esses são os comandos que eu sei:");
-        responseText(`
-            <strong>0-</strong>Ver Comandos<br>
-            <strong>1-</strong>Dizer alguma frase!<br>
-            <strong>ajuda-</strong>Mensagem de ajuda<br>
-            <strong>sair-</strong>Encerra o atendimento<br>
-        `);
-        commandReset();
-        return;
-    },
-    sair: function() {
-        responseText('Adeus :)');
-        responseText('Atendimento encerrado..');
-        responseText(`<a href='#'>Clique aqui para voltar a tela inicial...</a>`);
-        commandReset();
-        return;
-    }
-};
+var servicos = InputBase()
 
 
 function separaRespostas(input){
@@ -40,10 +22,10 @@ function separaRespostas(input){
             if(input == departament){
                 lista.push(service)
             }
-
-            servicos[departament] = function() {
+            
+            servicos[id] = function() {
                 lista.forEach(service => {
-                        responseText(`<strong>${departament} - </strong>${service.title}<br>`);
+                        responseText(`<strong>${service.id} - </strong>${service.title}<br>`);
                         commandReset(respostas);
                         return;
                 })

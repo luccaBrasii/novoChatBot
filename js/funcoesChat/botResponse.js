@@ -9,7 +9,7 @@ function botResponse(textVal) {
     userBubble.innerHTML = busca.value[textVal]();
       
     chatList.appendChild(userBubble)
-
+    
     textInput.value = "";
   }
 

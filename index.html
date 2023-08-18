@@ -1,42 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>ChatBot!</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/style.css">
-  </head>
 
-  <body>
-    <main class="page__main">
-      <div class="chatbot">
+<head>
+  <meta charset="UTF-8">
+  <title>ChatBot!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/style.css">
+</head>
 
-        <div class="return">
-          <p><strong>Atendente virtual</strong></p>
-        </div>
-        
-        <div class="block--background">
-          <div class="chatbot__overview">
-            
-            <ul class="chatlist">
-              
-            </ul>
-        
-          </div>
+<body>
+  <main class="page__main">
+    <div class="chatbot">
 
-          <div class="chatbox-area">
-            <form action="" id="chatform">
-                <textarea placeholder="Fale comigo!" class="chatbox" name="chatbox" resize= "none" minlength="1"></textarea>
-                <input class="submit-button" type="submit" value="Enviar">
-            </form>
-          </div>
+      <div class="return">
+        <img src="./static/img/logo-pref-goiania.png" >
       </div>
-    </main>
 
-    <script src="js/index.js" type="module"></script>
-    <script src='js/api/index.js' type="module"></script>
-    
+      <div class="block--background">
+        <div class="chatbot__overview">
 
-  </body>
+          <ul class="chatlist">
+
+
+          </ul>
+
+        </div>
+
+        <div class="chatbox-area">
+          <form action="" id="chatform">
+            <textarea placeholder="Fale comigo!" class="chatbox" name="chatbox" resize="none" minlength="1"></textarea>
+            <input class="submit-button" type="submit" value="Enviar">
+          </form>
+        </div>
+      </div>
+  </main>
+
+  <script src="js/index.js" type="module"></script>
+  <script src='js/api/index.js' type="module"></script>
+
+
+</body>
 
 </html>

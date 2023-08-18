@@ -8,7 +8,7 @@
   const chatList = document.querySelector('.chatlist')
   const textInput = document.querySelector('.chatbox')
   const sendForm = document.querySelector('#chatform')
-  
+
   var animationCounter = {value: 1}
   var hasCorrectInput = {value: undefined}
   var busca = {value: inputInicial}

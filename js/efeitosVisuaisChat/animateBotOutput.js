@@ -6,12 +6,30 @@ const animationBubbleDelay = 600
 
 //CONTROLA A ANIMAÇÃO DAS BOLHAS DE CHAT PARA DAR UM VISUAL MELHOR..
 function animateBotOutput() {
+    const lastBotOutputDiv = chatList.lastElementChild;
+
+    if (lastBotOutputDiv && lastBotOutputDiv.classList.contains('botOutput')) {
+      const liInsideDiv = lastBotOutputDiv.querySelector('li.bot__output');
+      if (liInsideDiv) {
+          
+          liInsideDiv.style.animationDelay= (animationCounter.value * animationBubbleDelay)+"ms";
+          liInsideDiv.style.animationPlayState = "running";
+      }
+    }
+
+    lastBotOutputDiv.style.animationDelay= (animationCounter.value * animationBubbleDelay)+"ms";
     
-    chatList.lastElementChild.style.animationDelay= (animationCounter.value * animationBubbleDelay)+"ms";
+
+    console.log(lastBotOutputDiv)
+
+
     let valor = animationCounter.value
     valor ++
     animationCounter.value = valor;
-    chatList.lastElementChild.style.animationPlayState = "running";
+
+    lastBotOutputDiv.style.animationPlayState = "running";
+    
+    
   }
 
 export default animateBotOutput

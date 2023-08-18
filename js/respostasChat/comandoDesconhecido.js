@@ -4,17 +4,25 @@ import {chatList, textInput, animationCounter} from '../index.js'
 
 //FUNÇÃO QUE USAMOS PARA A RESPOSTAS QUE O CHAT NAO CONSEGUE RESPONDER
   function comandoDesconhecido(mensagemErro) {
-      //CRIA A BOLHA DE CHAT
+      const userBubbleDiv = document.createElement('div');
+      userBubbleDiv.classList.add('botOutput');
+  
+      const img = document.createElement('img');
+      img.src = './static/img/pmg-logo.png';
+  
       var failedResponse = document.createElement('li');
       
 
       failedResponse.classList.add('bot__output');
       failedResponse.classList.add('bot__output--failed');
-
-      //ADD TEXTO A BOLHA
+  
       failedResponse.innerHTML = mensagemErro;
+  
+      userBubbleDiv.appendChild(img);
+      userBubbleDiv.appendChild(failedResponse);
+  
+      chatList.appendChild(userBubbleDiv);
 
-      chatList.appendChild(failedResponse) 
 
       //FUNÇÃO QUE MUDA A ANIMAÇÃO NO CSS (ta no final...)
       animateBotOutput();
