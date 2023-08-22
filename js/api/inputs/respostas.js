@@ -15,19 +15,19 @@ function separaAnswer(input){
 
     services.forEach(service => {
         const id = service.id;
-        
+        const departament = service.department.toString();
         
         if(input == id){
             lista.push(service)
         }
 
-            respostas[id] = function() {
-                lista.forEach(service => {
-                        responseText(`<p>${service.answer}</p>`);
-                        commandReset();
-                        return;
-                })
-            }
+        respostas[id] = function() {
+            lista.forEach(service => {
+                    responseText(`<p>${service.answer}</p>`);
+                    commandReset();
+                    return;
+            })
+        }
             
             
         })

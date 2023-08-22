@@ -8,7 +8,8 @@ const services = data.services
 
 
 const inputInicial = InputBase()
-  
+
+
 
 function separaServices(input){
 
@@ -18,10 +19,11 @@ function separaServices(input){
         const id = service.id;
         const departament = service.department.toString();
         
+        //ALTERAR AQUI
             if(input == departament){
                 lista.push(service)
             }
-            
+
         inputInicial[id] = function() {
             lista.forEach(service => {
                     responseText(`<strong>${service.id} - </strong>${service.name}<br>`);
@@ -30,7 +32,11 @@ function separaServices(input){
                 })
             }
         })
+
+    
 }
 
 
+
 export {inputInicial, separaServices}
+

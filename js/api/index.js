@@ -3,7 +3,6 @@ const departments = data.departments
 const chatList = document.querySelector('.chatlist')
 
 
-
 //DA BOAS VINDAS E EXIBE OS DEPARTAMENTOS
     function funcaoBoasVindas(){     
 
@@ -29,6 +28,7 @@ const chatList = document.querySelector('.chatlist')
 
         departments.forEach( (departamento) => {
             
+            
             chatList.innerHTML += `
             <div class="botOutput">
                 <img src="./static/img/pmg-logo.png" style="opacity: 0;">
@@ -45,6 +45,8 @@ const chatList = document.querySelector('.chatlist')
     }
 
     funcaoBoasVindas()
+    
+    
 //
 
 
@@ -63,3 +65,4 @@ function RevelaOutputs(){
         botOutput.style.animationPlayState = 'running';
     });
 }
+

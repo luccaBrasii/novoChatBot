@@ -20,9 +20,6 @@ function animateBotOutput() {
     lastBotOutputDiv.style.animationDelay= (animationCounter.value * animationBubbleDelay)+"ms";
     
 
-    console.log(lastBotOutputDiv)
-
-
     let valor = animationCounter.value
     valor ++
     animationCounter.value = valor;

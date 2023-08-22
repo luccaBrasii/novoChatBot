@@ -4,6 +4,7 @@
   import { separaRespostas } from './api/inputs/services.js';
   import { separaAnswer } from './api/inputs/respostas.js';
 
+
 //VARIAVEIS
   const chatList = document.querySelector('.chatlist')
   const textInput = document.querySelector('.chatbox')
@@ -12,8 +13,7 @@
   var animationCounter = {value: 1}
   var hasCorrectInput = {value: undefined}
   var busca = {value: inputInicial}
-  
- 
+
 //DETECTA O ENVIO DA MENSAGEM DO USUARIO POR PRESSIONAR 'ENTER' E RENDERIZA A MENSAGEM NO FRONT
 
   sendForm.onkeydown = function(e){
@@ -26,7 +26,6 @@
         separaServices(input)
         separaRespostas(input)
         separaAnswer(input)
-
 
         chatUsuario(input)
       }
