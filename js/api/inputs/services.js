@@ -6,9 +6,10 @@ import commandReset from "../../funcoesChat/commandReset.js";
 import InputBase from "./InputBase.js";
 import {InputDisponiveis} from "./inputInicial.js";
 import {respostas} from "./respostas.js";
+import { inputEscolhido } from "../../index.js";
 
 
-var servicos = InputBase()
+var servicos = InputBase('services')
 
 
 async function separaRespostas(input){
@@ -16,8 +17,12 @@ async function separaRespostas(input){
     var lista = []
     var novosInputs = []
 
+
     InputDisponiveis.value.forEach(inputsDisponiveis =>{
         if(input == inputsDisponiveis){
+
+            inputEscolhido.value = input
+
             services.forEach(service => {
                 const id = service.id;
                 const departament = service.department.toString();
@@ -35,6 +40,7 @@ async function separaRespostas(input){
                         })
                     }
             })
+            
             InputDisponiveis.value = novosInputs
       
         }

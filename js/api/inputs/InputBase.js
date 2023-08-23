@@ -1,8 +1,9 @@
 import responseText from "../../funcoesChat/responseText.js";
 import commandReset from "../../funcoesChat/commandReset.js";
+import { voltar } from "../index.js";
 
-function InputBase(){
-
+function InputBase(parametro){
+        
     return {
         ajuda: function() {
             responseText("Esses são os comandos que eu sei:");
@@ -22,10 +23,13 @@ function InputBase(){
         },
         voltar: function() {
             responseText(`Voltando..`)
-            
+            console.log(parametro);
+            voltar(parametro)
             return;
         }
     };
 }
 
 export default InputBase
+
+

@@ -5,15 +5,20 @@ import responseText from "../../funcoesChat/responseText.js";
 import commandReset from "../../funcoesChat/commandReset.js";
 import InputBase from "./InputBase.js";
 import {InputDisponiveis} from "./services.js";
-import { inputInicial } from "./inputInicial.js";
+import { inputEscolhido } from "../../index.js";
+import InputFinal from "./InputFinal.js";
 
-var respostas = InputBase()
+var respostas = InputBase('voltaService')
+
 
 function separaAnswer(input){
     var lista = []
+    
 
     InputDisponiveis.value.forEach(inputsDisponiveis =>{
         if(input == inputsDisponiveis){
+
+            inputEscolhido.value = input
 
             services.forEach(service => {
                 const id = service.id;
@@ -27,10 +32,11 @@ function separaAnswer(input){
                     lista.forEach(service => {
                             responseText(`<p>${service.answer}</p>`);
                             responseText(`Para encerrar o atendimento digite: sair`)
-                            commandReset(inputInicial, 1);
+                            commandReset(InputFinal, undefined);
                     })
                 }        
             })
+            
         }
 
     })
