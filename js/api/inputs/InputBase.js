@@ -7,9 +7,8 @@ function InputBase(){
         ajuda: function() {
             responseText("Esses são os comandos que eu sei:");
             responseText(`
-                <strong>[0 / sair ]-</strong>Encerra o atendimento<br>
-                <strong>1-</strong>Dizer alguma frase!<br>
-                <strong>ajuda-</strong>Mensagem de ajuda<br>
+                <strong>ajuda-</strong>Mensagem de ajuda.<br>
+                <strong>sair-</strong>Encerra o atendimento.<br>
             `);
             commandReset();
             return;
@@ -21,13 +20,11 @@ function InputBase(){
             commandReset();
             return;
         },
-        0: function() {
-            responseText('Atendimento encerrado..');
-            responseText('Adeus :)');
-            responseText(`<a href='#'>Clique aqui para voltar a tela inicial...</a>`);
-            commandReset();
+        voltar: function() {
+            responseText(`Voltando..`)
+            
             return;
-        },
+        }
     };
 }
 

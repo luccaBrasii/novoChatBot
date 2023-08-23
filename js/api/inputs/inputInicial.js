@@ -3,40 +3,42 @@ import responseText from "../../funcoesChat/responseText.js";
 import commandReset from "../../funcoesChat/commandReset.js";
 import InputBase from "./InputBase.js";
 import {servicos} from "./services.js";
-
+import InputDisponiveis from "../index.js";
 const services = data.services
 
-
-const inputInicial = InputBase()
-
+var inputInicial = InputBase()
 
 
 function separaServices(input){
-
     var lista = []
+    var novosInputs = []
 
-    services.forEach(service => {
-        const id = service.id;
-        const departament = service.department.toString();
+    InputDisponiveis.value.forEach(inputsDisponiveis =>{
+        if(input == inputsDisponiveis){
+            services.forEach(service => {
+                const id = service.id;
+                const departament = service.department.toString();
+                
+                if(input == departament){
+                    lista.push(service)
+                    novosInputs.push(id)
+                }
         
-        //ALTERAR AQUI
-            if(input == departament){
-                lista.push(service)
-            }
-
-        inputInicial[id] = function() {
-            lista.forEach(service => {
-                    responseText(`<strong>${service.id} - </strong>${service.name}<br>`);
-                    commandReset(servicos);
-                    return;
-                })
-            }
-        })
-
+                inputInicial[id] = function() {
+                    lista.forEach(service => {
+                            responseText(`<strong>${service.id} - </strong>${service.name}<br>`);
+                            commandReset(servicos,2);
+                            return;
+                    })
+                }
+              })
+            InputDisponiveis.value = novosInputs
+        }
+    })
     
+    
+
 }
 
-
-
-export {inputInicial, separaServices}
+export {inputInicial, separaServices, InputDisponiveis}
 

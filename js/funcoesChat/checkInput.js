@@ -1,13 +1,13 @@
 import botResponse from "./botResponse.js";
 import comandoDesconhecido from "../respostasChat/comandoDesconhecido.js";
-import { hasCorrectInput, busca } from "../index.js";
+import { hasCorrectInput, busca, mensagemErro } from "../index.js";
 
-const mensagemErro = "Desculpe não consegui entender :( para ver a lista de comandos digite: ajuda"
+
 
 //VERIFICA O INPUT DO USUARIO PARA VER SE ELE TEM RESPOSTA PARA ESSAS PERGUNTAS...
 function checkInput(input) {
     hasCorrectInput.value = false;
-    
+   
     
     //PERCORRE TODO O OBJETO PARA VERIFICAR SE EXISTEM ALGUM COMANDO
       for(var textVal in busca.value){

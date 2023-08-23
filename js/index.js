@@ -9,12 +9,14 @@
   const chatList = document.querySelector('.chatlist')
   const textInput = document.querySelector('.chatbox')
   const sendForm = document.querySelector('#chatform')
+  const mensagemErro = "Desculpe não consegui entender :( para ver a lista de comandos digite: ajuda"
 
   var animationCounter = {value: 1}
   var hasCorrectInput = {value: undefined}
   var busca = {value: inputInicial}
-
+  var passo = {value: 1}
 //DETECTA O ENVIO DA MENSAGEM DO USUARIO POR PRESSIONAR 'ENTER' E RENDERIZA A MENSAGEM NO FRONT
+  
 
   sendForm.onkeydown = function(e){
     if(e.keyCode == 13){
@@ -23,10 +25,14 @@
       const input = textInput.value.toLowerCase();
 
       if(input.length > 0) {
-        separaServices(input)
-        separaRespostas(input)
-        separaAnswer(input)
-
+        if(passo.value == 1){
+          separaServices(input)
+        }else if(passo.value == 2){
+          separaRespostas(input)
+        }else if(passo.value == 3){
+          separaAnswer(input)
+        }
+        
         chatUsuario(input)
       }
     }
@@ -39,11 +45,14 @@
     const input = textInput.value.toLowerCase();
 
     if(input.length > 0) {
-      separaServices(input)
-      separaRespostas(input)
-      separaAnswer(input)
-
-
+      if(passo.value == 1){
+        separaServices(input)
+      }else if(passo.value == 2){
+        separaRespostas(input)
+      }else if(passo.value == 3){
+        separaAnswer(input)
+      }
+      
       chatUsuario(input)
     }
   }) 
@@ -55,7 +64,9 @@
     textInput,
     animationCounter,
     hasCorrectInput,
-    busca
+    busca,
+    mensagemErro,
+    passo
   }
 
 

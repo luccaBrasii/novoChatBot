@@ -23,7 +23,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   line-height: 1.45;
-  background-color: #00453D;
+  background-color: lightgreen;
 }
 
 .page__main {
@@ -38,7 +38,7 @@ body {
 
 .return {
   display: flex;
-  background-color: #008080;
+  background-color: #00564C;
   color: #F6F6F6;
   justify-content: space-between;
   border-radius: 6px;
@@ -54,7 +54,7 @@ body {
 
 
 .chatbot__overview {
-  background-color: #00564C;
+  background-color:  #008080;
   display: flex;
   align-content: space-between;
   min-height: 80vh;
@@ -214,10 +214,10 @@ body {
 
 textarea[name="chatbox"] {
   resize: none;
-  border: 2px solid #00b6b6;
+  border: 2px solid #008080;
   border-right: 0;
   width: 100%;
-  background-color: transparent;
+  background-color: #00453D;
   color: #fff;
   height: 3em;
   margin: 0;
@@ -257,7 +257,7 @@ input[type="submit"] {
   margin: 0;
   background-color: #008080;
   color: #fff;
-  border: 2px solid #00b6b6;
+  border: 2px solid #00221e;
   border-left: 0;
   border-radius: 0 8px 8px 0;
   font-family: inherit;

@@ -2,9 +2,10 @@ import data from "./fetch.js";
 const departments = data.departments
 const chatList = document.querySelector('.chatlist')
 
+var InputDisponiveis = {value: []}
 
 //DA BOAS VINDAS E EXIBE OS DEPARTAMENTOS
-    function funcaoBoasVindas(){     
+   async function funcaoBoasVindas(){     
 
         chatList.innerHTML += `
                     <div class="botOutput">
@@ -14,8 +15,6 @@ const chatList = document.querySelector('.chatlist')
                         </li>
                     </div>
                             `
-
-
         chatList.innerHTML += `
         <div class="botOutput">
             <img src="./static/img/pmg-logo.png" style="opacity: 0;">
@@ -25,32 +24,34 @@ const chatList = document.querySelector('.chatlist')
         </div>
                 `
 
+        renderizaDepartamentos()
 
-        departments.forEach( (departamento) => {
-            
-            
-            chatList.innerHTML += `
-            <div class="botOutput">
-                <img src="./static/img/pmg-logo.png" style="opacity: 0;">
-                <li class="bot__output bot__output--standard">
-                    <strong>${departamento.id} - </strong>${departamento.category}<br>
-                </li>
-            </div>
-            `
-        })
-
-        RevelaOutputs()
+        await RevelaOutputs()
 
         
     }
 
     funcaoBoasVindas()
     
-    
+
 //
 
+function renderizaDepartamentos(){
+    departments.forEach( (departamento) => {
+            
+        InputDisponiveis.value.push(departamento.id)
+        chatList.innerHTML += `
+        <div class="botOutput">
+            <img src="./static/img/pmg-logo.png" style="opacity: 0;">
+            <li class="bot__output bot__output--standard">
+                <strong>${departamento.id} - </strong>${departamento.category}<br>
+            </li>
+        </div>
+        `
+    })
+}
 
-function RevelaOutputs(){
+async function RevelaOutputs(){
     const botOutputs = chatList.querySelectorAll('.bot__output');
     const botOutputs2 = chatList.querySelectorAll('.botOutput');
 
@@ -66,3 +67,5 @@ function RevelaOutputs(){
     });
 }
 
+
+export default InputDisponiveis
